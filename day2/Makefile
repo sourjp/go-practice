@@ -13,22 +13,22 @@ db-access:
 	@psql -h localhost -U root -W root -d todo
 
 test:
-	curl localhost:8080/api/v1/todo/getitems
+	curl localhost:8080/api/v1/todos
 	@echo 
-	curl -X POST localhost:8080/api/v1/todo/create -d '{"title": "yesterday", "message": "cooked"}'
+	curl -X POST localhost:8080/api/v1/todos -d '{"title": "yesterday", "message": "cooked"}'
 	@echo 
-	curl -X POST localhost:8080/api/v1/todo/create -d '{"title": "today", "message": "cook"}'
+	curl -X POST localhost:8080/api/v1/todos -d '{"title": "today", "message": "cook"}'
 	@echo 
-	curl -X POST localhost:8080/api/v1/todo/create -d '{"title": "tomorrow", "message": "will cook"}'
+	curl -X POST localhost:8080/api/v1/todos -d '{"title": "tomorrow", "message": "will cook"}'
 	@echo 
-	curl localhost:8080/api/v1/todo/get/3
+	curl localhost:8080/api/v1/todos/3
 	@echo 
-	curl -X PUT localhost:8080/api/v1/todo/update/3 -d '{"title": "tomorrow", "message": "will not cook"}'
+	curl -X PUT localhost:8080/api/v1/todos -d '{"title": "tomorrow", "message": "will not cook"}'
 	@echo 
-	curl localhost:8080/api/v1/todo/get/3
+	curl localhost:8080/api/v1/todos
 	@echo 
-	curl -X DELETE localhost:8080/api/v1/todo/delete/1
+	curl -X DELETE localhost:8080/api/v1/todos/1
 	@echo 
-	curl localhost:8080/api/v1/todo/getitems
+	curl localhost:8080/api/v1/todos
 	@echo 
-	curl localhost:8080/api/v1/todo/getitems?limit=1
+	curl localhost:8080/api/v1/todos?limit=1

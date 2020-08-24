@@ -15,14 +15,14 @@ func Router() {
 		log.Fatal(err)
 	}
 
-	v1 := r.Group("/api/v1/todo")
+	v1 := r.Group("/api/v1/")
 	{
 		th := NewTODOHandler(models.NewTODOList(db))
-		v1.GET("/getitems", th.GetItems)
-		v1.GET("/get/:id", th.Get)
-		v1.POST("/create", th.Create)
-		v1.PUT("/update/:id", th.Update)
-		v1.DELETE("/delete/:id", th.Delete)
+		v1.GET("/todos", th.GetItems)
+		v1.GET("/todos/:id", th.Get)
+		v1.POST("/todos", th.Create)
+		v1.PUT("/todos/:id", th.Update)
+		v1.DELETE("/todos/:id", th.Delete)
 	}
 	r.Run(":8080")
 }
